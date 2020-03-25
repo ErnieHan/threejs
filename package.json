@@ -2,7 +2,7 @@
   "name": "react-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://erniehan.github.io/once/",
+  "homepage": "https://erniehan.github.io/threejs/",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "core-js": "^3.3.2",
@@ -24,7 +24,7 @@
     "styled-components": "^4.4.0"
   },
   "scripts": {
-    "start": "set PORT=8080 && react-scripts start",
+    "start": "PORT=8080 react-scripts start",
     "build": "react-scripts build",
     "build:testing": "cross-env REACT_APP_BUILD_ENV=testing react-scripts build",
     "build:uat": "cross-env REACT_APP_BUILD_ENV=uat react-scripts build",
