@@ -2,12 +2,16 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import apple from "../image/sand.jpg";
 
 let scene, renderer, camera, cube;
 
 class Basic extends Component {
   componentDidMount() {
+    this.init();
+    this.start();
+  }
+
+  init() {
     // 建立場景
     scene = new THREE.Scene();
     // 建立渲染器
@@ -21,7 +25,7 @@ class Basic extends Component {
     // 將渲染器生成在元素上
     document.getElementById("threejs").appendChild(renderer.domElement);
     // 建立相機
-    camera = new THREE.PerspectiveCamera(6, 600 / 400, 0.1, 100);
+    camera = new THREE.PerspectiveCamera(10, 600 / 400, 0.1, 100);
     camera.position.set(10, 10, 10);
     camera.lookAt(scene.position);
     // 建立光源
@@ -39,14 +43,13 @@ class Basic extends Component {
     scene.add(cube);
     // 設定滑鼠可滾動
     var controls = new OrbitControls(camera, renderer.domElement);
-    controls.minDistance = 2;
+    controls.minDistance = 10;
     controls.maxDistance = 20;
     // 滑鼠滾動無法直達底部
     controls.maxPolarAngle = Math.PI / 2;
     controls.update();
     // 偵測滑鼠滑動事件
     controls.addEventListener("change", this.handleControls);
-    this.start();
   }
 
   handleControls = e => {};
