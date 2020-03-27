@@ -19,7 +19,7 @@ class Basic extends Component {
     // 場景大小
     renderer.setSize(600, 400);
     // 背景色
-    renderer.setClearColor(0xffe4e1, 1.0);
+    renderer.setClearColor(0xfdd1be, 1.0);
     // 陰影效果
     renderer.shadowMap.enable = true;
     // 將渲染器生成在元素上
@@ -32,7 +32,7 @@ class Basic extends Component {
     let pointLight = new THREE.PointLight(0xffffff);
     let pointLight2 = new THREE.PointLight(0xffffff);
     pointLight2.position.set(30, -30, 30);
-    pointLight.position.set(10, 10, 10);
+    pointLight.position.set(1, 1, 1);
     scene.add(pointLight);
     scene.add(pointLight2);
     // 建立物體
@@ -69,7 +69,11 @@ class Basic extends Component {
   render() {
     return (
       <React.Fragment>
-        <Board id="threejs"></Board>
+        <Content>
+          <Left></Left>
+          <Center id="threejs"></Center>
+          <Right></Right>
+        </Content>
       </React.Fragment>
     );
   }
@@ -77,9 +81,27 @@ class Basic extends Component {
 
 export default Basic;
 
-const Board = styled.div`
+const Content = styled.div`
   width: 100%;
   height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+const Left = styled.div`
+  width: 25%;
+`;
+
+const Right = styled.div`
+  width: 25%;
+  height: 100%;
+  background: #fde9df;
+`;
+
+const Center = styled.div`
+  width: 50%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
