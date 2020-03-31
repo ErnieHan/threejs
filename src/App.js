@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Basic from "./components/Basic";
 import Ascii from "./components/Ascii";
 import Stencil from "./components/Stencil";
+import File from "./components/File";
 
 class App extends Component {
   render() {
@@ -23,6 +24,9 @@ class App extends Component {
             </Route>
             <Route path="/stencil">
               <Stencil />
+            </Route>
+            <Route path="/file">
+              <File />
             </Route>
             <Route path="*"></Route>
           </Switch>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import iamge from "../image/sand.jpg";
 
 let scene, renderer, camera, cube;
 
@@ -15,7 +16,7 @@ class Basic extends Component {
     // 建立場景
     scene = new THREE.Scene();
     // 建立渲染器
-    renderer = new THREE.WebGLRenderer();
+    renderer = new THREE.WebGLRenderer({ antialias: true });
     // 場景大小
     renderer.setSize(600, 400);
     // 背景色
@@ -31,13 +32,14 @@ class Basic extends Component {
     // 建立光源
     let pointLight = new THREE.PointLight(0xffffff);
     let pointLight2 = new THREE.PointLight(0xffffff);
-    pointLight2.position.set(30, -30, 30);
     pointLight.position.set(1, 1, 1);
+    pointLight2.position.set(30, -30, 30);
     scene.add(pointLight);
     scene.add(pointLight2);
     // 建立物體
     const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshPhongMaterial({ color: 0xadd8e6 });
+    const texture = new THREE.TextureLoader().load(iamge);
+    const material = new THREE.MeshPhongMaterial({ map: texture });
     cube = new THREE.Mesh(geometry, material);
     cube.position.set(0, 0, 0);
     scene.add(cube);
@@ -56,7 +58,7 @@ class Basic extends Component {
 
   start() {
     // 執行旋轉動畫
-    // this.animate();
+    this.animate();
     requestAnimationFrame(this.start.bind(this));
     renderer.render(scene, camera);
   }
@@ -96,7 +98,7 @@ const Left = styled.div`
 const Right = styled.div`
   width: 25%;
   height: 100%;
-  background: #fde9df;
+  /* background: #fde9df; */
 `;
 
 const Center = styled.div`
